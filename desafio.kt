@@ -16,20 +16,22 @@ fun main() {
     formaKotlin.todosOsConteudos.add(dockerCont)
     formaKotlin.todosOsConteudos.add(javaFund)
     formaKotlin.todosOsConteudos.add(desafioKotlin1)
-    
+    formaKotlin.todosOsConteudos.add(desafioKotlin2)
+    println(formaKotlin)
     
     val paulo = Dev("Paulo")
     val quem = Dev("O Doutor")
     
-    //quem seMatriculaEm dockerCont
-    //quem seMatriculaEm aprendaGit
-    paulo seMatriculaEmFormacao formaKotlin
+    quem seMatriculaEm dockerCont
+    quem seMatriculaEm aprendaGit
+    quem concluiu aprendaGit
+    println("Experiencia total de "+quem.nome+" : "+quem.calcularXp())
     
+    paulo seMatriculaEmFormacao formaKotlin
     paulo concluiu javaFund
     paulo concluiu desafioKotlin1
     paulo concluiu aprendaGit //ele não está matriculado nesse curso
-    
-    print(paulo.calcularXp())
+    println("Experiencia total de "+paulo.nome+" : "+paulo.calcularXp())
 }
 class Formacao(val nome:String, val descr:String,val nivel:String){
     val todosOsConteudos=mutableSetOf<Conteudo>()
@@ -59,7 +61,7 @@ class Curso(nome:String, descr:String, nivel:String,val horas:Int):Conteudo(nome
     fun mostrarDevsMatriculados(){
         println("Lista de alunos matriculados em $nome")
         for(aluno in alunosMatriculados){
-            println("    "+ aluno.nome)
+            println("Nome:"+ aluno.nome)
         }
     }
     override fun retornarXp():Int{
@@ -82,12 +84,11 @@ class Desafio(nome:String, descr:String, nivel:String):Conteudo(nome,descr,nivel
 
 class Dev(val nome:String){
     var bio:String = "Olá, meu nome é $nome"
-    var nivel:Int=0
     val conteudosConcluidos = mutableListOf<Conteudo>()
     
     infix fun seMatriculaEm(conteudo:Conteudo){
         conteudo.alunosMatriculados.add(this)
-        println("$nome matriculado em "+conteudo.nome+" com sucesso")
+        println("$nome foi matriculado em "+conteudo.nome+" com sucesso")
     }
     infix fun concluiu(conteudo:Conteudo){
         if(conteudo.alunosMatriculados.contains(this)){
@@ -109,6 +110,4 @@ class Dev(val nome:String){
         return soma
     }
     
-    
 }
-
