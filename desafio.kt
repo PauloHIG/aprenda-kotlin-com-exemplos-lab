@@ -17,21 +17,20 @@ fun main() {
     formaKotlin.todosOsConteudos.add(javaFund)
     formaKotlin.todosOsConteudos.add(desafioKotlin1)
     formaKotlin.todosOsConteudos.add(desafioKotlin2)
-    println(formaKotlin)
     
     val paulo = Dev("Paulo")
     val quem = Dev("O Doutor")
-    
+    quem.bio = "Viajo no tempo pois o tempo não é linear"
     quem seMatriculaEm dockerCont
     quem seMatriculaEm aprendaGit
     quem concluiu aprendaGit
-    println("Experiencia total de "+quem.nome+" : "+quem.calcularXp())
+    println(quem)
     
     paulo seMatriculaEmFormacao formaKotlin
     paulo concluiu javaFund
     paulo concluiu desafioKotlin1
     paulo concluiu aprendaGit //ele não está matriculado nesse curso
-    println("Experiencia total de "+paulo.nome+" : "+paulo.calcularXp())
+    println(paulo)
 }
 class Formacao(val nome:String, val descr:String,val nivel:String){
     val todosOsConteudos=mutableSetOf<Conteudo>()
@@ -108,6 +107,10 @@ class Dev(val nome:String){
             soma+= conteudo.retornarXp()
         }
         return soma
+    }
+    
+    override fun toString():String{
+        return "Perfil do Desenvolvedor\nNome:$nome\nBiografia: $bio\nExperiência:"+ calcularXp()
     }
     
 }
