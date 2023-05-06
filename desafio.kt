@@ -7,7 +7,7 @@ fun main() {
                            "Conheça o básico da ferramenta de versionamento mais popular",
                            "BASICO",
                            2)
-    val desafioKotlin1 = Desafio("Introdução","Printe Olá Mundo na tela","BASICO")
+    val desafioKotlin1 = Desafio("Primeiro Código Kotlin","Printe Olá Mundo na tela","BASICO")
     val desafioKotlin2 = Desafio("Média",
                                  "Você receberá três inputs de aluno, calcule a media e retorne se ele foi aprovado ou reprovado",
                                  "BASICO")
@@ -24,6 +24,10 @@ fun main() {
     //quem seMatriculaEm dockerCont
     //quem seMatriculaEm aprendaGit
     paulo seMatriculaEmFormacao formaKotlin
+    
+    paulo concluiu javaFund
+    paulo concluiu desafioKotlin1
+    paulo concluiu aprendaGit //ele não está matriculado nesse curso
     
     print(paulo.calcularXp())
 }
@@ -83,7 +87,7 @@ class Dev(val nome:String){
     
     infix fun seMatriculaEm(conteudo:Conteudo){
         conteudo.alunosMatriculados.add(this)
-        println("$nome matriculado no curso "+conteudo.nome+" com sucesso")
+        println("$nome matriculado em "+conteudo.nome+" com sucesso")
     }
     infix fun concluiu(conteudo:Conteudo){
         if(conteudo.alunosMatriculados.contains(this)){
@@ -105,4 +109,6 @@ class Dev(val nome:String){
         return soma
     }
     
+    
 }
+
