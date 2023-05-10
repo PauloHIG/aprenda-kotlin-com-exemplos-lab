@@ -31,6 +31,8 @@ fun main() {
     paulo concluiu desafioKotlin1
     paulo concluiu aprendaGit //ele não está matriculado nesse curso
     println(paulo)
+	paulo.mudarNome("pedro")
+    println(paulo)
 }
 class Formacao(val nome:String, val descr:String,val nivel:String){
     val todosOsConteudos=mutableSetOf<Conteudo>()
@@ -60,7 +62,7 @@ class Curso(nome:String, descr:String, nivel:String,val horas:Int):Conteudo(nome
     fun mostrarDevsMatriculados(){
         println("Lista de alunos matriculados em $nome")
         for(aluno in alunosMatriculados){
-            println("Nome:"+ aluno.nome)
+            println("Nome:"+ aluno.exibirNome())
         }
     }
     override fun retornarXp():Int{
@@ -73,7 +75,7 @@ class Desafio(nome:String, descr:String, nivel:String):Conteudo(nome,descr,nivel
     fun mostrarDevsMatriculados(){
         println("Lista de alunos que aceitaram o desafio $nome")
         for(aluno in alunosMatriculados){
-            println("    "+ aluno.nome)
+            println("    "+ aluno.exibirNome())
         }
     }
     override fun retornarXp():Int{
@@ -81,10 +83,13 @@ class Desafio(nome:String, descr:String, nivel:String):Conteudo(nome,descr,nivel
     }
 }
 
-class Dev(val nome:String){
-    var bio:String = "Olá, meu nome é $nome"
+class Dev(private var nome:String){
+    var bio = "Olá, sou um futuro desenvolvedor"
     val conteudosConcluidos = mutableListOf<Conteudo>()
-    
+    fun mudarNome(novoNome:String){
+        nome = novoNome
+    }
+    fun exibirNome():String{return nome}
     infix fun seMatriculaEm(conteudo:Conteudo){
         conteudo.alunosMatriculados.add(this)
         println("$nome foi matriculado em "+conteudo.nome+" com sucesso")
