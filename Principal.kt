@@ -31,6 +31,6 @@ fun main() {
     paulo concluiu desafioKotlin1
     paulo concluiu aprendaGit //ele não está matriculado nesse curso
     println(paulo)
-	paulo.mudarNome("pedro")
+    paulo.mudarNome("pedro")
     println(paulo)
 }
